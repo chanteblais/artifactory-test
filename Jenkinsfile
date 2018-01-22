@@ -1,5 +1,5 @@
 node {
-    def server = Artifactory.server artifactory-dev.buffact.ca
+    def server = artifactory-dev.buffact.ca
 
     def uploadSpec = readfile 'files/*'
     
