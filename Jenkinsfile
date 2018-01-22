@@ -1,12 +1,7 @@
 node {
-    def server = Artifactory.server artifactory-dev.buffcat.ca
+    def server = Artifactory.server SERVER_ID
 
-    def uploadSpec = """{
-        "files": [
-                {
-                    "pattern": "my-repository/*",
-                    "target": "my_files/"
-                }
-            ]
-        }"""
+    def uploadSpec = readfile 'files/*'
+    
+    def buildInfo1 = server.upload spec: uploadSpec
 }
