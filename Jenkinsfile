@@ -1,7 +1,14 @@
 node {
     def server = Artifactory.server 'artifact01'
 
-    def uploadSpec = readfile 'files/*'
+    def uploadSpec = """{
+        "files": [
+          {
+            "pattern": "files/*",
+            "target": "my-repository/test/"
+          }
+        ]
+      }"""
     
-    def buildInfo1 = server.upload spec: uploadSpec
+    server.upload (uploadSpec)
 }
