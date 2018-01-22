@@ -4,7 +4,7 @@ node {
     def uploadSpec = """{
         "files": [
           {
-            "pattern": "files/",
+            "pattern": "files/file1",
             "target": "my-repository/test/"
           }
         ]
