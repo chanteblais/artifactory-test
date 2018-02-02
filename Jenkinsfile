@@ -15,6 +15,7 @@ pipeline {
     stages {
         stage('Example') {
             steps {
+                server.download(downloadSpec)
             }  
         }
     }
