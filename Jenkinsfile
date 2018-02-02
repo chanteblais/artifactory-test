@@ -3,10 +3,16 @@ pipeline {
         label 'SlaveNode' 
     }
     stages {
-        stage('Example') {
-                steps {
-                    echo "Testing123"        
-            }   
+        stage('download') {
+            def server = Artifactory.server "artifact01"
+            def downloadSpec = """{
+                "files": [
+                  {
+                      "pattern": my-repository/test/,
+                      "target": "bazinga/"
+                    }
+                ]
+            }"""   
         }
     }
 }
