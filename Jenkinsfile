@@ -13,7 +13,7 @@ pipeline {
         label 'SlaveNode' 
     }
     stages {
-        stage('Example') {
+        stage('download') {
             steps {
                 script {
                     server.download(downloadSpec)
