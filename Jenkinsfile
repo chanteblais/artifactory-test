@@ -1,8 +1,10 @@
 pipeline {
-    agent {
-        node {
-            label 'SlaveNode'
-            echo 'Hello World!'       
+    agent 'SlaveNode'
+    stages {
+        stage('Example') {
+                steps {
+                    echo "Testing123"        
+            }   
         }
     }
 }
