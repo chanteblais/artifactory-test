@@ -3,7 +3,7 @@ pipeline {
         label 'SlaveNode' 
     }
     stages {
-        stage('download') {
+        stage('Example') {
             def server = Artifactory.server "artifact01"
             def downloadSpec = """{
                 "files": [
