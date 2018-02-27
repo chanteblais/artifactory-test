@@ -1,24 +1,25 @@
 def server = Artifactory.server "artifact01"
-def downloadSpec = """{
-    "files": [
-          {
-              "pattern": "my-repository/test/",
-              "target": "bazinga/"
-            }
-          ]
-        }""" 
+def uploadSpec
 
-pipeline {
-    agent { 
-        label 'SlaveNode' 
+node (label: 'jbuild01_docker') {
+    def app
+
+    stage('Clone repository') {
+
+        checkout scm
     }
-    stages {
-        stage('download') {
-            steps {
-                script {
-                    server.download(downloadSpec)
-                }
-            }  
-        }
+    
+    stage('Upload') {
+        
+        uploadSpec = """{
+          "files": [
+            {
+              "pattern": "artifactory-test-master/files/",
+              "target": "my-repository"
+            }
+         ]
+        }""" 
+        
+        server.upload(uploadSpec)
     }
 }
