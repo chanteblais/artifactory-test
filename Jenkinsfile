@@ -1,4 +1,4 @@
-def server = Artifactory.server "artifact01"
+def server = Artifactory.server "Artifactory-Dev"
 def uploadSpec
 
 node (label: 'jbuild01_docker') {
