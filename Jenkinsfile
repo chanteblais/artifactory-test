@@ -4,12 +4,10 @@ def uploadSpec
 node (label: 'jbuild01_docker') {
 
     stage('Clone repository') {
-
         checkout scm
     }
     
     stage('Upload') {
-        
         uploadSpec = """{
           "files": [
             {
@@ -18,7 +16,6 @@ node (label: 'jbuild01_docker') {
             }
          ]
         }""" 
-        
         server.upload(uploadSpec)
     }
 }
